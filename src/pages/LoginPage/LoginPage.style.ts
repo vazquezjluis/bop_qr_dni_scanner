@@ -11,9 +11,11 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     marginRight: theme.spacing(2),
     width: '50px',
+    borderRadius: '50%',
   },
   title: {
     flexGrow: 1,
+    marginLeft: theme.spacing(2),
   },
   footer: {
     marginTop: 'auto',

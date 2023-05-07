@@ -10,11 +10,11 @@ const LoginPage: React.FC = () => {
 
   return (
     <Box className={classes.root}>
-      <AppBar position="static" style={{ backgroundColor: 'black',marginBottom: '15px' }} >
+      <AppBar position="static" style={{ backgroundColor: 'black', marginBottom: '35px', height: '80px', paddingTop: '10px' }} >
         <Toolbar>
-          {/* <img src="/path/to/your/logo.png" alt="Bingo Oasis Pilar" className={classes.logo} /> */}
+          <img src="./img/logo.jpeg" alt="Bingo Oasis Pilar" className={classes.logo} />
           <Typography variant="caption" className={classes.title}>
-            Document Scanner
+            Document Scanner - Bingo Oasis Pilar
           </Typography>
         </Toolbar>
       </AppBar>

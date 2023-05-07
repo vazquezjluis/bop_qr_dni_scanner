@@ -10,13 +10,15 @@ export const useAuth = () => {
 
   useEffect(() => {
     if (token) {
-        navigate('/scanner');
+        // navigate('/scanner');
+        // setToken(null);
     }
   }, [token, history]);
 
   const signIn = async (username: string, password: string) => {
+    navigate('/scanner');
     const data = await login(username, password);
-    setToken(data.token);
+    setToken(data.access_token);
   };
 
   return { token, signIn };

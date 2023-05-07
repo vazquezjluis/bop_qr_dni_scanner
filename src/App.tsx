@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/LoginPage';
 import { useAuthStore } from './store/auth';
+import ScannerPage from './pages/ScannerPage/ScannerPage';
 
 const App: React.FC = () => {
   const token = useAuthStore((state) => state.token);
@@ -10,7 +11,12 @@ const App: React.FC = () => {
     <Router>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-        <Route element={ token ? <Navigate to="/scanner" /> : <Navigate to="/login" />} />
+        <Route path="/scanner" element={ 
+          // token ? 
+          <ScannerPage /> 
+          // : <LoginPage />
+          } 
+          />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
