@@ -6,6 +6,8 @@ import {
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import ScanResult, { ScanResultType } from '../ScanResult/ScanResult';
 import { Button, Grid } from '@material-ui/core';
+import { useMutation } from '@tanstack/react-query'
+import { addClientAndRecordScan } from '../../hooks/useClientes';
 
 
 
@@ -14,6 +16,17 @@ const Scanner: React.FC = () => {
   const [videoInputDevices, setVideoInputDevices] = useState<MediaDeviceInfo[]>([]);
   const [scanResult, setScanResult] = useState<ScanResultType | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const { mutate, isLoading } = useMutation({
+    mutationFn: addClientAndRecordScan,
+    onSuccess: (data) => {
+      console.log(data)
+    },
+    onError: (error) => {
+      console.error(error)
+    }
+  })
+
 
   const hints = new Map();
   hints.set(DecodeHintType.ASSUME_GS1, true);
@@ -33,7 +46,7 @@ const Scanner: React.FC = () => {
 
   const startScan = () => {
     if (videoRef.current) {
-      codeReader.decodeFromVideoDevice(selectedDeviceId, videoRef.current, (result, err) => {
+      codeReader.decodeFromVideoDevice(selectedDeviceId, videoRef.current, async (result, err) => {
         if (result) {
           const textResult = result.getText();
           const [
@@ -46,7 +59,7 @@ const Scanner: React.FC = () => {
             fechaNacimiento,
             fechaEmision,
           ] = textResult.split('@');
-          setScanResult({
+          const scanData = {
             codigo,
             apellido,
             nombre,
@@ -55,8 +68,16 @@ const Scanner: React.FC = () => {
             ejemplar,
             fechaNacimiento,
             fechaEmision,
-          });
+          };
+          setScanResult(scanData);
           codeReader.reset();
+
+          try {
+            mutate(scanData)
+            console.log('Cliente agregado y escaneo registrado con éxito');
+          } catch (error) {
+            console.error('Error al agregar cliente y registrar escaneo:', error);
+          }
         }
         if (err) {
           console.error(err);

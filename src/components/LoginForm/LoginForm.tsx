@@ -5,7 +5,7 @@ import { loginSchema } from '../../utils/validation';
 import useStyles from './LoginForm.styles';
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import LockRoundedIcon from '@mui/icons-material/LockRounded'
-import { Button } from '@mui/material';
+import { Alert, Button } from '@mui/material';
 
 
 interface LoginFormProps {
@@ -42,7 +42,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
                         fullWidth
                         id="username"
                         name="username"
-                        label="Nombre de usuario"
+                        label="Usuario"
                         type="text"
                         value={formik.values.username}
                         onChange={formik.handleChange}
@@ -71,7 +71,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
-                                    <LockRoundedIcon sx={{ color: 'orange' }}/>
+                                    <LockRoundedIcon sx={{ color: 'orange' }} />
                                 </InputAdornment>
                             ),
                         }}
@@ -91,9 +91,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
                 </Grid>
                 {error && (
                     <Grid item xs={12}>
-                        <Typography variant="subtitle1" color="error">
+                        <Alert severity="error" variant='filled'>
                             {error}
-                        </Typography>
+                        </Alert>
                     </Grid>
                 )}
             </Grid>

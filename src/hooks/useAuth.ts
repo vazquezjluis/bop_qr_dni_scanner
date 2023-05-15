@@ -21,5 +21,10 @@ export const useAuth = () => {
     setToken(data.access_token);
   };
 
-  return { token, signIn };
+  const signOut = () => {
+    setToken(null);
+  };
+
+
+  return { token, signIn, signOut };
 };

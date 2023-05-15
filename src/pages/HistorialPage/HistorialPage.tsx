@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Grid, Typography } from '@material-ui/core';
-import Scanner from '../../components/Scanner/Scanner';
+import Historial from '../../components/Historial/Historial';
 
-const ScannerPage: React.FC = () => {
+const HistorialPage: React.FC = () => {
     return (
         <Container maxWidth="sm" style={{ backgroundColor: '#303030', color: 'white', minHeight: '100vh', padding: '2em' }}>
             <Grid container spacing={3} alignItems="center" justifyContent="center">
@@ -11,13 +11,13 @@ const ScannerPage: React.FC = () => {
                         Bingo Oasis Pilar
                     </Typography> */}
                     <Typography variant="h6" component="h2" align="center" gutterBottom>
-                        Escanea aqui el DNI...
+                        Historial
                     </Typography>
                 </Grid>
-                <Scanner />
+                <Historial />
             </Grid >
         </Container >
     );
 };
 
-export default ScannerPage;
+export default HistorialPage;
