@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import {  Route, Routes, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/LoginPage';
 import { useAuthStore } from './store/auth';
 import Layout from './components/Layout/Layout';
@@ -8,7 +8,7 @@ import ScannerPage from './pages/ScannerPage/ScannerPage';
 
 
 const App: React.FC = () => {
-  const token = useAuthStore((state) => state.token);
+  const token = useAuthStore((state: any) => state.token);
 
   return (
       <Routes>

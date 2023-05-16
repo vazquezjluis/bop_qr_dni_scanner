@@ -17,12 +17,12 @@ const Scanner: React.FC = () => {
   const [scanResult, setScanResult] = useState<ScanResultType | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: addClientAndRecordScan,
-    onSuccess: (data) => {
+    onSuccess: (data : any) => {
       console.log(data)
     },
-    onError: (error) => {
+    onError: (error: any) => {
       console.error(error)
     }
   })
@@ -34,7 +34,7 @@ const Scanner: React.FC = () => {
   const codeReader = new BrowserMultiFormatReader(hints);
 
   useEffect(() => {
-    codeReader.getVideoInputDevices().then((devices) => {
+    codeReader.getVideoInputDevices().then((devices: any) => {
       setSelectedDeviceId(devices[0].deviceId);
       setVideoInputDevices(devices);
     });

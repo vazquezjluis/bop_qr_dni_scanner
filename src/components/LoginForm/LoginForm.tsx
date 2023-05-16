@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
-import { TextField, Grid, Typography, InputAdornment } from '@material-ui/core';
+import { TextField, Grid, InputAdornment } from '@material-ui/core';
 import { loginSchema } from '../../utils/validation';
 import useStyles from './LoginForm.styles';
 import AccountCircle from '@mui/icons-material/AccountCircle'
@@ -12,7 +12,7 @@ interface LoginFormProps {
     onSubmit: (username: string, password: string) => void;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }: LoginFormProps) => {
     const classes = useStyles();
     const [error, setError] = useState('');
 
@@ -22,7 +22,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
             password: '',
         },
         validationSchema: loginSchema,
-        onSubmit: async (values, { setSubmitting }) => {
+        onSubmit: async (values: { username: string; password: string; }, { setSubmitting }: any) => {
             try {
                 setError('');
                 await onSubmit(values.username, values.password);

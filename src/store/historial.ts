@@ -18,9 +18,9 @@ interface historialACtions {
 
 export const useHistorialStore = create(
     persist<HistorialState & historialACtions>(
-        (set, get) => ({
+        (set: any) => ({
             historial: [],
-            setHistorial: (data) => set({ historial: data }),
+            setHistorial: (data: any) => set({ historial: data }),
             getHistorial: () => {
                 getHistorialScaner().then((data) => {
                     set({ historial: data });
