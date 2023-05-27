@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { REST_API } from '../constants/constants';
 
 export const api = axios.create({
-  baseURL: 'http://localhost:3000/api', // Reemplace con la URL base de su API
+  baseURL: REST_API,
 });
 
 export const login = async (username: string, password: string) => {

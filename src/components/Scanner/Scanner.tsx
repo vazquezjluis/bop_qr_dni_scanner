@@ -35,7 +35,7 @@ const Scanner: React.FC = () => {
 
   useEffect(() => {
     codeReader.getVideoInputDevices().then((devices: any) => {
-      setSelectedDeviceId(devices[0].deviceId);
+      setSelectedDeviceId(devices[1].deviceId);
       setVideoInputDevices(devices);
     });
 
